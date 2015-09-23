@@ -17,41 +17,32 @@
 	</table>
 	<input type="submit" value="Post">
 </form>
-<table>
 <% for(var i in infos) { %>
-	<tr>
-		<td><h3>Name:</h3></td>
-		<td><%= infos[i].name %></td>
-	</tr>
-	<tr>
-		<td><h3>Message:</h3></td>
-		<td><h3><%=  infos[i].content %></h3></td>
-	</tr>
+		<h3>Name:<%= infos[i].name %></h3>
+		<h3>Message:<%=  infos[i].content %></h3>
 	<% for(var idx in comments) { %>
 	<% if(comments[idx]._post == infos[i].id){ %>
-	<tr>
-		<td><%= comments[idx].name %></td>
-		<td><%= comments[idx].text %></td>
-	</tr>
+		<p><%= comments[idx].name %> says: 
+		<%= comments[idx].text %></p>
 	<%     } %>
 	<% } %>
-	<tr>
-		<td><form action="add_comment/<%= infos[i].id %>" method="post"></td>
-		<td>Name:</td>
-		<td><input type="text" name="name_com" ></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td>Comment:</td>
-		<td><textarea name="content_com"></textarea></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td><input type="submit" value="Post a comment"></td>
-	</tr>
-		</form>
+	<table>
+		<tr>
+			<form action="add_comment/<%= infos[i].id %>" method="post">
+			<td>Name:</td>
+			<td><input type="text" name="name_com" ></td>
+		</tr>
+		<tr>
+			<td>Comment:</td>
+			<td><textarea name="content_com"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="Post a comment"></td>
+		</tr>
+			</form>
+	</table>
+		<br>
 <% } %>
-</table>
 </body>
 </html>

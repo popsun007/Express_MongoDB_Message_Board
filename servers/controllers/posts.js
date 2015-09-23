@@ -17,8 +17,8 @@ postController.show = function(req, res)
 				{
 					res.render("main", {infos: post_results, comments: comment_results});
 				}
-			})
-		})
+			}).sort({created_at: -1});
+		}).sort({_id: 1});
 	}
 postController.add_post = function(req, res)
 	{
