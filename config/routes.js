@@ -4,7 +4,6 @@ module.exports = function(app)
 		app.get("/", function(req, res)
 		{
 			postController.show(req, res);
-			postController.show_comment(req, res);
 		});
 		app.post("/add_post", function(req,res)
 		{

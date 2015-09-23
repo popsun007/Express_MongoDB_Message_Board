@@ -4,6 +4,11 @@
 	<title>Message Board</title>
 </head>
 <body>
+<% if(typeof(errors) != "undefined"){ %>
+<%  for(var i in errors) {   %>
+<div style="color: red;"><%= errors[i].message; %></div>
+	<% } %>
+<%  } %>
 <form action="/add_post" method="post">
 	<table>
 		<tr>
@@ -16,7 +21,15 @@
 		</tr>
 	</table>
 	<input type="submit" value="Post">
+	<a href="/">Home</a>
 </form>
+<% if(typeof(com_errors) != "undefined"){ %>
+<%  for(var i in com_errors) {   %>
+<div style="color: red;"><%= com_errors[i].message; %></div>
+	<% } %>
+<%  } %>
+<%  if(typeof(infos) != "undefined"){ %>
+
 <% for(var i in infos) { %>
 		<h3>Name:<%= infos[i].name %></h3>
 		<h3>Message:<%=  infos[i].content %></h3>
@@ -26,6 +39,7 @@
 		<%= comments[idx].text %></p>
 	<%     } %>
 	<% } %>
+
 	<table>
 		<tr>
 			<form action="add_comment/<%= infos[i].id %>" method="post">
@@ -43,6 +57,8 @@
 			</form>
 	</table>
 		<br>
+	<% } %>
 <% } %>
+
 </body>
 </html>

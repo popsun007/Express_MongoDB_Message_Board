@@ -18,7 +18,7 @@ postController.show = function(req, res)
 					res.render("main", {infos: post_results, comments: comment_results});
 				}
 			}).sort({created_at: -1});
-		}).sort({_id: 1});
+		}).sort({_id: -1});
 	}
 postController.add_post = function(req, res)
 	{
@@ -30,7 +30,7 @@ postController.add_post = function(req, res)
 		{
 			if(err)
 			{
-				console.log("Error on add_post");
+				res.render("main", {title: "You have error on Add post", errors: new_post.errors});
 			}
 			else
 			{
@@ -49,13 +49,13 @@ postController.add_comment = function(req, res)
 				});
 				new_comment._post = post._id;
 				post.comments.push(new_comment);
-				new_comment.save(function(err)
+				new_comment.save(function(com_err)
 				{
 					post.save(function(err)
 					{
-						if(err)
+						if(com_err)
 						{
-							console.log("Error at save comment");
+							res.render("main", {title: "You have error on Add comment",com_errors: new_comment.errors});
 						}
 						else
 						{
@@ -65,8 +65,4 @@ postController.add_comment = function(req, res)
 				});
 			});
 	}
-postController.show_comment = function(req, res)
-{
-
-}
 module.exports = postController;

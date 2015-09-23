@@ -7,5 +7,6 @@ var posts = new mongoose.Schema({
 	comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
-
+posts.path('name').required(true, 'User name cannot be blank');
+posts.path('content').required(true, 'Post cannot be blank');
 module.exports = mongoose.model("Posts", posts);
