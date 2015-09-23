@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/message_board');
 var Schema = mongoose.Schema;
 var posts = new mongoose.Schema({
 	name: String,

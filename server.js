@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // view folder and view engine
 app.set('views', path.join(__dirname, './servers/views'));
 app.set('view engine', 'ejs');
-
+require('./config/mongoose.js');
 // routes and passing it app
 require('./config/routes.js')(app);
 
