@@ -1,5 +1,7 @@
-var Posts = require('../models/post.js');
-var Comment = require('../models/comment.js');
+var mongoose = require('mongoose');
+var Posts = mongoose.model('Posts');
+var Comment = mongoose.model('Comments');
+
 
 var postController = {};
 
